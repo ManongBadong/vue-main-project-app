@@ -31,7 +31,8 @@ export default {
     async beforeMount() {
         this.isLoading = true;
         const id = this.id;
-
+        console.log(this.id);
+        console.log(id);
         await this.$store.dispatch({
             type: 'coach/refreshSpecificCoach',
             id

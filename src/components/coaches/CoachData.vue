@@ -4,10 +4,10 @@
         <span class="rate">${{ coach.rate }}/hour</span>
         <div class="pill-container">
             <coach-type-pill v-for="type in coach.types" :key="type" :coach-type="type">{{ type.charAt(0).toUpperCase()
-                    + type.slice(1)
-            }}</coach-type-pill>
+        + type.slice(1)
+}}</coach-type-pill>
         </div>
-        <div class="description" v-if="coach.description">
+        <div class="description" v-if="coach.description && asList">
             {{ coach.description }}
         </div>
         <div class="action-container" v-if="asList">

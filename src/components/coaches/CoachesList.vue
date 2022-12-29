@@ -1,6 +1,6 @@
 <template>
     <div class="coach-list-actions">
-        <button-card type="button" mode="secondary" @click="fetchCoaches">Refresh</button-card>
+        <button-card type="button" mode="secondary" @click="fetchCoaches">Refresh!x</button-card>
         <button-card type="button" mode="primary" link-to="/register-coach">Register</button-card>
     </div>
     <div v-if="!isLoading">
@@ -25,6 +25,7 @@ export default {
         CoachData,
         TheLoader
     },
+    props: ['activeFilters'],
     data() {
         return {
             isLoading: false
@@ -35,9 +36,11 @@ export default {
     },
     methods: {
         async fetchCoaches() {
+            let activeFilters = { filters: this.activeFilters };
             this.isLoading = true;
             try {
-                await this.$store.dispatch('coach/fetchCoaches');
+                console.log(activeFilters)
+                await this.$store.dispatch({ type: 'coach/fetchCoaches', activeFilters });
             } catch (error) {
                 console.log(error);
             }

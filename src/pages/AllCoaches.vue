@@ -4,7 +4,7 @@
             <coach-list-filters @change-filter="changeFilters"></coach-list-filters>
         </section-card>
         <section-card>
-            <coaches-list></coaches-list>
+            <coaches-list :active-filters="activeFilters"></coaches-list>
         </section-card>
     </section>
 </template>
@@ -18,15 +18,26 @@ export default {
         CoachesList,
         CoachListFilters
     },
+    data() {
+        return {
+            activeFilters: {
+                frontend: false,
+                backend: false,
+                career: false
+            }
+        };
+    },
     methods: {
         async changeFilters(filters) {
-            console.log(filters)
+            this.activeFilters = filters;
+            let activeFilters = this.activeFilters
+            console.log(this.activeFilters)
             await this.$store.dispatch({
                 type: 'coach/fetchCoaches',
-                filters
+                activeFilters
             })
         }
-    }
+    },
 }
 </script>
 

@@ -12,30 +12,30 @@ export default {
 
           let fetchedCoaches = [];
 
-          console.log(payload.filters);
+          console.log(payload);
 
           for (const coach in coaches) {
             let filtered = false;
 
-            if (payload.filters.frontend) {
+            if (payload.activeFilters.frontend) {
               if (coaches[coach].types.includes('frontend')) filtered = true;
             }
 
-            if (payload.filters.backend) {
+            if (payload.activeFilters.backend) {
               if (coaches[coach].types.includes('backend')) {
                 filtered = true;
                 console.log('test');
               }
             }
 
-            if (payload.filters.career) {
+            if (payload.activeFilters.career) {
               if (coaches[coach].types.includes('career')) filtered = true;
             }
 
             if (
-              !payload.filters.frontend &&
-              !payload.filters.backend &&
-              !payload.filters.career
+              !payload.activeFilters.frontend &&
+              !payload.activeFilters.backend &&
+              !payload.activeFilters.career
             ) {
               filtered = true;
               console.log('testsetesteste');
